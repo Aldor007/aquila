@@ -16,7 +16,6 @@
  */
 
 #include "Mfcc.h"
-#include "Dct.h"
 #include "../source/SignalSource.h"
 #include "../filter/MelFilterBank.h"
 
@@ -37,7 +36,6 @@ namespace Aquila
         Aquila::MelFilterBank bank(source.getSampleFrequency(), m_inputSize);
         auto filterOutput = bank.applyAll(spectrum);
 
-        Aquila::Dct dct;
-        return dct.dct(filterOutput, numFeatures);
+        return m_dct.dct(filterOutput, numFeatures);
     }
 }

@@ -19,6 +19,7 @@
 #define MFCC_H
 
 #include "../global.h"
+#include "Dct.h"
 #include "FftFactory.h"
 #include <cstddef>
 #include <vector>
@@ -77,6 +78,11 @@ namespace Aquila
          * FFT calculator.
          */
         std::shared_ptr<Fft> m_fft;
+
+        /**
+         * DCT calculator
+         */
+        Aquila::Dct m_dct;
     };
 }
 
