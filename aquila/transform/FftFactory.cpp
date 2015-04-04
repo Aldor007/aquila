@@ -17,6 +17,7 @@
 
 #include "FftFactory.h"
 #include "OouraFft.h"
+#include "KissFft.h"
 
 namespace Aquila
 {
@@ -35,8 +36,11 @@ namespace Aquila
      * @param length FFT length (number of samples)
      * @return the FFT object (wrapped in a shared_ptr)
      */
-    std::shared_ptr<Fft> FftFactory::getFft(std::size_t length)
+    std::shared_ptr<Fft> FftFactory::getFft(std::size_t length, Fft_method choice)
     {
+        if (choice == KISS) {
+            return std::shared_ptr<Fft>(new KissFft(length));
+        }
         return std::shared_ptr<Fft>(new OouraFft(length));
     }
 }

@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 2.8.11)
 project(Aquila CXX)
+include_directories(lib)
 
 set(Aquila_VERSION_MAJOR 3)
 set(Aquila_VERSION_MINOR 0)
@@ -87,11 +88,13 @@ set(Aquila_HEADERS
     aquila/transform/Dft.h
     aquila/transform/AquilaFft.h
     aquila/transform/OouraFft.h
+    aquila/transform/KissFft.h
     aquila/transform/FftFactory.h
     aquila/transform/Dct.h
     aquila/transform/Mfcc.h
     aquila/transform/Spectrogram.h
     aquila/tools/TextPlot.h
+    lib/kiss_fft/kissfft.hh
 )
 
 # library sources
@@ -120,6 +123,7 @@ set(Aquila_SOURCES
     aquila/transform/Dft.cpp
     aquila/transform/AquilaFft.cpp
     aquila/transform/OouraFft.cpp
+    aquila/transform/KissFft.cpp
     aquila/transform/FftFactory.cpp
     aquila/transform/Dct.cpp
     aquila/transform/Mfcc.cpp
