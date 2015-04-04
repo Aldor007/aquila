@@ -15,6 +15,9 @@
  * @since 3.0.0
  */
 
+#include <memory>
+
+
 #include "Mfcc.h"
 #include "../source/SignalSource.h"
 #include "../filter/MelFilterBank.h"
@@ -37,5 +40,10 @@ namespace Aquila
         auto filterOutput = bank.applyAll(spectrum);
 
         return m_dct.dct(filterOutput, numFeatures);
+    }
+
+    void Mfcc::setFft(std::unique_ptr<Fft> fft) {
+
+        m_fft = std::move(fft);
     }
 }

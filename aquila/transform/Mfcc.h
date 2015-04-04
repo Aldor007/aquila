@@ -60,13 +60,14 @@ namespace Aquila
          *
          * @param inputSize input length (common to all inputs)
          */
-        Mfcc(std::size_t inputSize):
-            m_inputSize(inputSize), m_fft(FftFactory::getFft(inputSize))
+        Mfcc(std::size_t inputSize, FftFactory::Method method = FftFactory::Method::OOURA):
+            m_inputSize(inputSize), m_fft(FftFactory::getFft(inputSize, method))
         {
         }
 
         std::vector<double> calculate(const SignalSource& source,
                                       std::size_t numFeatures = 12);
+        void setFft(std::unique_ptr<Fft> fft);
 
     private:
         /**

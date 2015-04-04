@@ -25,16 +25,17 @@
 
 namespace Aquila
 {
-    enum Fft_method {
-        KISS, OOURA
-    };
     /**
      * A factory class to manage the creation of FFT calculation objects.
      */
     class AQUILA_EXPORT FftFactory
     {
     public:
-        static std::shared_ptr<Fft> getFft(std::size_t length, Fft_method choice = OOURA);
+        enum Method {
+            KISS, OOURA
+        };
+
+        static std::shared_ptr<Fft> getFft(std::size_t length, FftFactory::Method choice = OOURA);
     };
 }
 
