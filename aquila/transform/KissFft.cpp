@@ -21,7 +21,7 @@
 namespace Aquila
 {
 
-    KissFft::KissFft(std::size_t length) :Fft(length), m_kfft(length, false), m_kfft_inverse(length, true) {
+    KissFft::KissFft(std::size_t length) :Fft(length), m_kfft(length, false)  {
 
     }
 
@@ -44,9 +44,7 @@ namespace Aquila
             a[i] = x[i];
         }
 
-        // let's call the C function from  KissFFT libary
         m_kfft.transform(a, dst);
-
         // convert the array back to complex values and return as vector
         SpectrumType spectrum(dst, dst + N);
         delete [] a;
@@ -62,8 +60,9 @@ namespace Aquila
             sizeof(ComplexType[2]) == sizeof(double[4]),
             "complex<double> has the same memory layout as two consecutive doubles"
         );
+        kissfft<SampleType> inverse(N, true); 
         ComplexType* a = new ComplexType[N];
-        m_kfft_inverse.transform(&spectrum[0], a);
+        inverse.transform(&spectrum[0], a);
         for (std::size_t i = 0; i < N; ++i)
         {
             x[i] = a[i].real() / static_cast<double>(N);

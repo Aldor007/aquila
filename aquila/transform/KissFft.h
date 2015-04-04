@@ -42,7 +42,6 @@ namespace Aquila
          *  KissFft object
          */
         kissfft<SampleType> m_kfft;
-        kissfft<SampleType> m_kfft_inverse;
     };
 }
 
