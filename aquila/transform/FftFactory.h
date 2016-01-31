@@ -35,7 +35,7 @@ namespace Aquila
             KISS, OOURA
         };
 
-        static std::shared_ptr<Fft> getFft(std::size_t length, FftFactory::Method choice = OOURA);
+        static std::shared_ptr<Fft> getFft(std::size_t length, FftFactory::Method choice = KISS);
     };
 }
 
